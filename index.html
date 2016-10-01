@@ -2,14 +2,119 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <link rel="stylesheet" href="photon/dist/css/photon.css">
+    <link rel="stylesheet" href="node_modules/angular/angular-csp.css">
+    <link rel="stylesheet" href="index.css">
   </head>
-  <body>
-    <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using node <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
+  <body ng-app="blueshift">
+  <div class="window">
+    <header class="toolbar toolbar-header" ng-controller="headerCtrl">
+      <h1 class="title">Blueshift Clinical Decision Support</h1>
+
+      <div class="toolbar-actions rule-out-diagnose">
+        <div class="btn-group">
+          <button class="btn btn-default" ui-sref="ruleout">
+            <span class="icon icon-user"></span> Rule Out
+          </button>
+          <button class="btn btn-default" ui-sref="diagnosis">
+            <span class="icon icon-heart"></span>Diagnosis
+          </button>
+          <button class="btn btn-default pull-right">
+            <span class="icon icon-paper-plane"></span>Order Test
+          </button>
+        </div>
+      </div>
+    </header>
+  </div>
+    <!-- .toolbar-header sits at the top of your app -->
+
+    <!-- Your app's content goes inside .window-content -->
+  <div class="window-content">
+    <nav class="nav-group">
+      <h5 class="nav-group-title">Options</h5>
+      <a class="nav-group-item">
+        <span class="icon icon-home"></span>
+        Home
+      </a>
+      <span class="nav-group-item">
+        <span class="icon icon-download"></span>
+        Metrics
+      </span>
+      <span class="nav-group-item">
+        <span class="icon icon-folder"></span>
+        Previous Orders
+      </span>
+      <span class="nav-group-item">
+        <span class="icon icon-signal"></span>
+        ICD 10 Documentation
+      </span>
+      <span class="nav-group-item">
+        <span class="icon icon-print"></span>
+        Help
+      </span>
+      <span class="nav-group-item">
+        <span class="icon icon-cloud"></span>
+        Support
+      </span>
+    </nav>
+    <div class="main-window">
+      <form class="ruleout-form">
+       <div class="form-group">
+        <h5>What would you like to rule out?</h5>
+        <input type="text" placeholder="e.g. Sarcoma">
+      </div>
+        <h5>Gender:</h5>
+        <div class="radio">
+          <label>
+            <input type="radio" name="gender">
+            Male
+          </label>
+          <label>
+            <input type="radio" name="gender">
+            Female
+          </label>
+        </div>
+        <h5>Obese?</h5>
+        <div class="radio">
+          <label>
+            <input type="radio" name="obese">
+            Yes
+          </label>
+          <label>
+            <input type="radio" name="obese">
+            No
+          </label>
+        </div>
+        <h5>Pregnant?</h5>
+        <div class="radio">
+          <label>
+            <input type="radio" name="pregnant">
+            Yes
+          </label>
+          <label>
+            <input type="radio" name="pregnant">
+            No
+          </label>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-form btn-default">Cancel</button>
+          <button type="submit" class="btn btn-form btn-primary">OK</button>
+        </div>
+      </form>
+      <ui-view></ui-view>
+
+    </div>
+  </div>
+
+    <script type="text/javascript" src="node_modules/angular/angular.js"></script>
+    <script type="text/javascript" src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="build/angular/app.js"></script>
+    <script type="text/javascript" src="build/angular/diagnosis/diagnosis.controller.js"></script>
+    <script type="text/javascript" src="build/angular/diagnosis/diagnosis.state.js"></script>
+    <script type="text/javascript" src="build/angular/header/header.controller.js"></script>
+    <script type="text/javascript" src="build/angular/rule-out/rule-out.state.js"></script>
+    <script type="text/javascript" src="build/angular/rule-out/rule-out.controller.js"></script>
+    <script type="text/javascript" src="build/angular/sidebar.js"></script>
   </body>
 
   <script>

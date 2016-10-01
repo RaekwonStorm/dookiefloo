@@ -1,0 +1,53 @@
+ui-view {
+  width: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'BlinkMacSystemFont';
+  font-weight: 100;
+}
+
+.toolbar-header .title {
+  font-size: 13px;
+}
+
+.rule-out-diagnose {
+  text-align: center;
+  margin: 0 auto;
+  span {
+    margin-right: 3px;
+  }
+}
+
+.window-content {
+  margin-top: 49px;
+  height: 100%;
+}
+
+.ruleout-form {
+  margin-top: 5px;
+  margin-left: 50px;
+    input {
+      width: 100%;
+    }
+}
+
+nav {
+  width: 30%;
+  box-shadow: 7px 0px 24px -8px rgba(0,0,0,0.75);
+  background-color: #0074D9;
+}
+
+input {
+  cursor: text;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #0074D9;
+  border-radius: 0;
+  background-color: transparent;
+  text-align: center;
+  margin: 15px auto 15px auto;
+}
