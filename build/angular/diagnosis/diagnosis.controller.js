@@ -1,18 +1,21 @@
-app.controller('diagnosisCtrl', function ($scope, decisionTrees) {
-  $scope.diagnoses = decisionTrees.diagnoses;
-  $scope.showResult = false;
-  $scope.result;
+app.controller('diagnosisCtrl', function($scope, decisionTrees) {
+    $scope.diagnoses = decisionTrees.diagnoses;
+    $scope.showResult = false;
+    $scope.history = [{text: "Willow was the best movie of 1988?", choices: ['Yes', 'No']}];
+    $scope.result = $scope.diagnoses.rlqp.prompt;
+    console.log($scope.result)
 
-  $scope.clickHandler = (diagnosis, gender, obese, pregnant) => {
-    if (gender === "male") {
-      $scope.result = $scope.diagnoses[diagnosis][gender]['obese'][obese]
-      console.log($scope.result);
-    } else {
-      $scope.result = $scope.diagnoses[diagnosis][gender][obese][pregnant];
+    $scope.clickHandler = (derp) => {
+      console.log("derp", derp);
     }
-    $scope.showResult = true;
-    console.log(gender, obese, pregnant);
-  }
 
-	console.log("Did it blend? " ,decisionTrees);
+
+  // let example = { prompt: {
+  //     text: 'obese',
+  //     choices: []
+  //   },
+  //   choice1: {},
+  //   choice2: {},
+  // }
+
 });

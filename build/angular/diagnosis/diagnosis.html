@@ -3,10 +3,35 @@
         <h5>What would you like to diagnose?</h5>
         <input type="text" placeholder="e.g. Sarcoma" ng-model="diagnosis">
       </div>
-        <h5>Gender:</h5>
+      <div>
+
+        <div class="radio" ng-show="history.length > 0" ng-repeat="step in history" >
+          <h5>{{step.text}}?</h5>
+
+          <label ng-repeat="choice in step.choices">
+            <input ng-model="choice" type="radio" name="choice" value="{{choice}}" ng-click="clickHandler(choice)">
+            {{choice}}
+          </label>
+        </div>
+
         <div class="radio">
-          <label>
-            <input type="radio" name="gender" ng-model="gender" value="male">
+          <h5>{{result.text}}?</h5>
+
+          <label ng-repeat="choice in result.choices">
+            <input ng-model="choice" type="radio" name="choice" value="{{choice}}" ng-click="clickHandler(choice)">
+            {{choice}}
+          </label>
+        </div>
+      </div>
+
+
+
+
+
+<!--
+        <div class="radio">
+          <label ng-repeat="r">
+            <input type="radio" name="gender" ng-click="clickHandler(gender)" ng-model="gender" value="male">
             Male
           </label>
           <label>
@@ -44,3 +69,4 @@
       <div ng-show="showResult">
         <p>You've got to get a {{result}}</p>
       </div>
+-->
