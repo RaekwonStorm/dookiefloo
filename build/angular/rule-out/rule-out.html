@@ -1,38 +1,38 @@
-      <form class="ruleout-form">
+      <form class="ruleout-form" ng-submit="clickHandler(ruleout, gender, obese, pregnant)">
        <div class="form-group">
         <h5>What would you like to rule out?</h5>
-        <input type="text" placeholder="e.g. Sarcoma">
+        <input type="text" placeholder="e.g. Sarcoma" ng-model="ruleout">
       </div>
         <h5>Gender:</h5>
         <div class="radio">
           <label>
-            <input type="radio" name="gender">
+            <input type="radio" name="gender" ng-model="gender" value="male">
             Male
           </label>
           <label>
-            <input type="radio" name="gender">
+            <input type="radio" name="gender" ng-model="gender" value="female">
             Female
           </label>
         </div>
         <h5>Obese?</h5>
         <div class="radio">
           <label>
-            <input type="radio" name="obese">
+            <input type="radio" name="obese" ng-model="obese" value="yes">
             Yes
           </label>
           <label>
-            <input type="radio" name="obese">
+            <input type="radio" name="obese" ng-model="obese" value="no">
             No
           </label>
         </div>
         <h5>Pregnant?</h5>
         <div class="radio">
           <label>
-            <input type="radio" name="pregnant">
+            <input type="radio" name="pregnant" ng-model="pregnant" value="yes">
             Yes
           </label>
           <label>
-            <input type="radio" name="pregnant">
+            <input type="radio" name="pregnant" ng-model="pregnant" value="no">
             No
           </label>
         </div>
@@ -41,3 +41,6 @@
           <button type="submit" class="btn btn-form btn-primary">OK</button>
         </div>
       </form>
+      <div ng-show="showResult">
+        <p>You've got to get a {{result}}</p>
+      </div>

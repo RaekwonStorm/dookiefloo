@@ -1,7 +1,7 @@
-      <form class="ruleout-form" ng-submit="clickHandler(gender, obese, pregnant)">
+      <form class="ruleout-form" ng-submit="clickHandler(diagnosis, gender, obese, pregnant)">
        <div class="form-group">
         <h5>What would you like to diagnose?</h5>
-        <input type="text" placeholder="e.g. Sarcoma">
+        <input type="text" placeholder="e.g. Sarcoma" ng-model="diagnosis">
       </div>
         <h5>Gender:</h5>
         <div class="radio">
