@@ -1,3 +1,6 @@
+const Bluebird = require('bluebird');
+const fs = Bluebird.promisifyAll(require('fs'));
+
 app.factory('decisionTrees', function() {
 
     let under20tree = {
@@ -47,15 +50,75 @@ app.factory('decisionTrees', function() {
                 no: under20tree
             }
 
+        },
+        "chest pain": {
+            prompt: {
+                text: "Has chest X-ray been ordered",
+                choices: ['yes', 'no']
+            },
+            yes: {
+                prompt: {
+                    text: "Clinical concern for PE",
+                    choices: ['yes', 'no']
+                },
+                yes: "CTA chest PE protocol",
+                no: {
+                    prompt: {
+                        text: "Clinical concern for dissection",
+                        choices: ['yes', 'no']
+                    },
+                    yes: "CTA chest dissection protocol",
+                    no: {
+                        prompt: {
+                            text: "Clinical concern for neoplasm",
+                            choices: ['yes', 'no']
+                        },
+                        yes: "CT chest with IV contrast",
+                        no: "CT chest without IV contrast"
+                    }
+                }
+            },
+            no: "PA and lateral chest X-ray"
         }
     }
 
     let ruleOuts = {
         "appendicitis": {
-            "obese": {
-                "yes": "CT w Contrast",
-                "no": "US RLQ"
-            }
+            prompt: {
+                text: "Obese",
+                choices: ['yes', 'no']
+            },
+            "yes": "CT w Contrast",
+            "no": "US RLQ"
+        },
+        "tachycardia": {
+            prompt: {
+                text: "Has chest X-ray been ordered",
+                choices: ['yes', 'no']
+            },
+            yes: {
+                prompt: {
+                    text: "Clinical concern for PE",
+                    choices: ['yes', 'no']
+                },
+                yes: "CTA chest PE protocol",
+                no: {
+                    prompt: {
+                        text: "Clinical concern for dissection",
+                        choices: ['yes', 'no']
+                    },
+                    yes: "CTA chest dissection protocol",
+                    no: {
+                        prompt: {
+                            text: "Clinical concern for neoplasm",
+                            choices: ['yes', 'no']
+                        },
+                        yes: "CT chest with IV contrast",
+                        no: "CT chest without IV contrast"
+                    }
+                }
+            },
+            no: "PA and lateral chest X-ray"
         }
     }
 

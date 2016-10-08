@@ -4,9 +4,10 @@ app.controller('diagnosisCtrl', function($scope, decisionTrees) {
     $scope.result;
     // console.log($scope.result)
 
-    $scope.currentState = decisionTrees.diagnoses.rlqp;
+    $scope.currentState = decisionTrees.diagnoses['chest pain'];
 
     $scope.clickHandler = (selection) => {
+      if ($scope.currentState == decisionTrees.diagnoses) return;
       // console.log("selection", selection);
       let lastState = {text: $scope.currentState.prompt.text, choices: $scope.currentState.prompt.choices}
       $scope.history.push(lastState);
