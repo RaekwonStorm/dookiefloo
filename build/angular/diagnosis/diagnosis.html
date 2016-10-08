@@ -1,8 +1,22 @@
 <form class="ruleout-form">
+ <!--   <input type="text" list="testicle">
+    <datalist id="testicle">
+        <option ng-repeat="option in diagnosisOptions" value="{{option}}">
+        {{option}}
+        </option>
+    </datalist>
+-->
+
     <div class="form-group">
-        <h5>What would you like to diagnose?</h5>
-        <input type="text" placeholder="e.g. Sarcoma" ng-model="diagnosis">
+    <h5>What would you like to diagnose?</h5>
+    <!--    <input type="text" placeholder="e.g. Sarcoma" ng-model="diagnosis"> -->
+    <select name="tree-selector" ng-model="tree" ng-change="selectHandler(tree)">
+        <option ng-repeat="option in diagnosisOptions" value="{{option}}">
+        {{option}}
+        </option>
+    </select>
     </div>
+
     <div>
         <div class="radio" ng-show="history.length > 0" ng-repeat="step in history">
             <h5>{{step.text}}?</h5>

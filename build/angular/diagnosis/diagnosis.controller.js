@@ -2,24 +2,33 @@ app.controller('diagnosisCtrl', function($scope, decisionTrees) {
     $scope.diagnoses = decisionTrees.diagnoses;
     $scope.history = [];
     $scope.result;
-    // console.log($scope.result)
 
-    $scope.currentState = decisionTrees.diagnoses['chest pain'];
+    $scope.diagnosisOptions = Object.keys($scope.diagnoses);
+
+    $scope.currentState = null;
 
     $scope.clickHandler = (selection) => {
       if ($scope.currentState == decisionTrees.diagnoses) return;
-      // console.log("selection", selection);
-      let lastState = {text: $scope.currentState.prompt.text, choices: $scope.currentState.prompt.choices}
+
+      let lastState = {
+          text: $scope.currentState.prompt.text,
+          choices: $scope.currentState.prompt.choices
+      }
+
       $scope.history.push(lastState);
+
       if (typeof $scope.currentState[selection] === 'string') {
         $scope.result = $scope.currentState[selection];
         $scope.currentState = null;
         return;
       }
-      // console.log('State Before: ', $scope.currentState);
+
       $scope.currentState = $scope.currentState[selection];
 
-      // console.log('State After: ', $scope.currentState);
+    }
+
+    $scope.selectHandler = (selection) => {
+        $scope.currentState = $scope.diagnoses[selection];
     }
 
 });
