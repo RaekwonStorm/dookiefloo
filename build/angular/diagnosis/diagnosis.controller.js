@@ -1,18 +1,34 @@
-app.controller('diagnosisCtrl', function ($scope, decisionTrees) {
-  $scope.diagnoses = decisionTrees.diagnoses;
-  $scope.showResult = false;
-  $scope.result;
+app.controller('diagnosisCtrl', function($scope, decisionTrees) {
+    $scope.diagnoses = decisionTrees.diagnoses;
+    $scope.history = [];
+    $scope.result;
 
-  $scope.clickHandler = (diagnosis, gender, obese, pregnant) => {
-    if (gender === "male") {
-      $scope.result = $scope.diagnoses[diagnosis][gender]['obese'][obese]
-      console.log($scope.result);
-    } else {
-      $scope.result = $scope.diagnoses[diagnosis][gender][obese][pregnant];
+    $scope.diagnosisOptions = Object.keys($scope.diagnoses);
+
+    $scope.currentState = null;
+
+    $scope.clickHandler = (selection) => {
+      if ($scope.currentState == decisionTrees.diagnoses) return;
+
+      let lastState = {
+          text: $scope.currentState.prompt.text,
+          choices: $scope.currentState.prompt.choices
+      }
+
+      $scope.history.push(lastState);
+
+      if (typeof $scope.currentState[selection] === 'string') {
+        $scope.result = $scope.currentState[selection];
+        $scope.currentState = null;
+        return;
+      }
+
+      $scope.currentState = $scope.currentState[selection];
+
     }
-    $scope.showResult = true;
-    console.log(gender, obese, pregnant);
-  }
 
-	console.log("Did it blend? " ,decisionTrees);
+    $scope.selectHandler = (selection) => {
+        $scope.currentState = $scope.diagnoses[selection];
+    }
+
 });
