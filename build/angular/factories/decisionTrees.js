@@ -14,38 +14,39 @@ app.factory('decisionTrees', function() {
             prompt: {
                 text: "Gender",
                 choices: ['male', "female"],
-                male: {
+            },
+            male: {
+                prompt: {
+                    text: 'Obeast?',
+                    choices: ['yes', 'no'],
+                },
+                yes: 'CT w Contrast',
+                no: under20tree
+            },
+            female: {
+                prompt: {
+                    text: 'Child bearing age?',
+                    choices: ['yes', 'no'],
+                },
+                yes: {
                     prompt: {
-                        text: 'Obeast?',
-                        choices: ['yes', 'no'],
-                        yes: 'CT w Contrast',
-                        no: under20tree
+                        text: 'Pregnert?',
+                        choices: ['yes', 'no, most likely ovarian/adnexal', 'no, most likely appendicitis'],
+                    },
+                    yes: 'TVUS OB',
+                    "No, most likely ovarian/adnexal": "TVUS GYN",
+                    "No, most likely appendicitis": {
+                        prompt: {
+                            text: 'Obeast?',
+                            choices: ['yes', 'no'],
+                            yes: 'CT w Contrast',
+                            no: 'US RLQ'
+                        }
                     }
                 },
-                female: {
-                    prompt: {
-                        text: 'Child bearing age?',
-                        choices: ['yes', 'no'],
-                        yes: {
-                            prompt: {
-                                text: 'Pregnert?',
-                                choices: ['yes', 'no, most likely ovarian/adnexal', 'no, most likely appendicitis'],
-                                yes: 'TVUS OB',
-                                "No, most likely ovarian/adnexal": "TVUS GYN",
-                                "No, most likely appendicitis": {
-                                    prompt: {
-                                        text: 'Obeast?',
-                                        choices: ['yes', 'no'],
-                                        yes: 'CT w Contrast',
-                                        no: 'US RLQ'
-                                    }
-                                }
-                            }
-                        },
-                        no: under20tree
-                    }
-                }
+                no: under20tree
             }
+
         }
     }
 
